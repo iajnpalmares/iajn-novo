@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IAJN - Igreja Apostólica Jesus para as Nações</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #222;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .logo svg {
+      height: 24px;
+      margin-right: 8px;
+    }
+    nav a {
+      color: white;
+      margin-left: 1rem;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+    nav a.active, nav a:hover {
+      background: red;
+    }
+    main {
+      padding: 100px 20px 60px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      display: none;
+      animation: fadein 0.3s ease;
+    }
+    section.active {
+      display: block;
+    }
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: relative;
+      margin-top: 40px;
+    }
+    .btn-topo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg fill="white" viewBox="0 0 24 24"><path d="M10 2h4v20h-4z"/><path d="M2 10h20v4H2z"/></svg>
+      IAJN
+    </div>
+    <nav id="menu">
+      <a href="#" onclick="mostrar('inicial')" class="active">Inicial</a>
+      <a href="#" onclick="mostrar('sobre')">Sobre</a>
+      <a href="#" onclick="mostrar('cultos')">Cultos</a>
+      <a href="#" onclick="mostrar('ministerios')">Ministérios</a>
+      <a href="#" onclick="mostrar('leitura')">Leitura Bíblica</a>
+      <a href="#" onclick="mostrar('oracao')">Oração</a>
+      <a href="#" onclick="mostrar('visita')">Visita</a>
+      <a href="#" onclick="mostrar('contato')">Contato</a>
+      <a href="#" onclick="mostrar('devocional')">Devocional</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicial" class="active">
+      <h1>Bem-vindo à IAJN</h1>
+      <p style="color:red; font-weight:bold;">“Buscai ao Senhor enquanto se pode achar.” - Isaías 55:6</p>
+      <p>Estamos localizados na Av. Luíz Portela de Carvalho, 1629 - Newton Carneiro, Palmares-PE.</p>
+    </section>
+
+    <section id="sobre">
+      <h2>Sobre Nós</h2>
+      <p>A Igreja Apostólica Jesus para as Nações é comprometida com a Palavra de Deus, a oração e o amor ao próximo.</p>
+    </section>
+
+    <section id="cultos">
+      <h2>Horários de Culto</h2>
+      <ul>
+        <li>Domingo - 18h</li>
+        <li>Quarta-feira - 19h30</li>
+        <li>Sexta-feira - 19h30</li>
+      </ul>
+    </section>
+
+    <section id="ministerios">
+      <h2>Ministérios</h2>
+      <p>Jovens, Mulheres, Homens, Infantil, Intercessão, Louvor, Missões.</p>
+    </section>
+
+    <section id="leitura">
+      <h2>Leitura Bíblica</h2>
+      <p>Acompanhe nosso plano de leitura diário pelo Instagram <strong>@familiaiajn</strong>.</p>
+    </section>
+
+    <section id="oracao">
+      <h2>Pedido de Oração</h2>
+      <form>
+        <label>Nome (opcional):<br><input type="text" /></label><br><br>
+        <label>Pedido:<br><textarea rows="4" cols="40"></textarea></label><br><br>
+        <button type="submit">Enviar Pedido</button>
+      </form>
+    </section>
+
+    <section id="visita">
+      <h2>Solicite uma Visita</h2>
+      <form>
+        <label>Nome:<br><input type="text" required /></label><br><br>
+        <label>Endereço:<br><input type="text" required /></label><br><br>
+        <label>Telefone:<br><input type="tel" required /></label><br><br>
+        <button type="submit">Solicitar</button>
+      </form>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <p>Email: contato@iajnpalmares.org</p>
+      <p>Instagram: <a href="https://instagram.com/familiaiajn" target="_blank">@familiaiajn</a></p>
+    </section>
+
+    <section id="devocional">
+      <h2>Devocional do Dia</h2>
+      <p><button onclick="mostrarDevocional()">Ler Devocional</button></p>
+      <div id="textoDevocional"></div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Igreja Apostólica Jesus para as Nações - Todos os direitos reservados
+  </footer>
+
+  <button class="btn-topo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑</button>
+
+  <script>
+    function mostrar(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('#menu a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function mostrarDevocional() {
+      const versiculos = [
+        "Salmos 23:1 — O Senhor é o meu pastor; nada me faltará.",
+        "Provérbios 3:5 — Confia no Senhor de todo o teu coração...",
+        "Isaías 41:10 — Não temas, porque eu sou contigo.",
+        "João 14:6 — Eu sou o caminho, a verdade e a vida.",
+        "Romanos 8:28 — Todas as coisas cooperam para o bem..."
+      ];
+      const aleatorio = versiculos[Math.floor(Math.random() * versiculos.length)];
+      document.getElementById("textoDevocional").innerText = aleatorio;
+    }
+  </script>
+</body>
+</html>
